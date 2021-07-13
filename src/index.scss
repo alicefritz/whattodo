@@ -1,0 +1,179 @@
+@mixin flex-center{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+*{
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Roboto', sans-serif;
+}
+
+body, #root, .App{
+  height: 100vh;
+}
+
+#root{
+  background: rgb(255,199,54);
+  background: linear-gradient(6deg, rgba(255,199,54,1) 0%, rgba(180,41,249,1) 100%);
+}
+
+button{
+  outline: none;
+  border: none;
+  background: rgba(67,230,91,1);
+  background: linear-gradient(0deg, rgba(67,230,91,1) 0%, rgba(0,255,158,1) 100%);
+  border-radius: 0.15rem;
+  padding: 0.5rem;
+}
+
+button:hover{
+  background: rgb(52, 179, 71);
+  background: linear-gradient(0deg, rgba(67,230,91,1) 0%, rgb(67, 185, 140) 100%);
+}
+
+.App{
+  width: 100%;
+  height: calc(100% - 5rem);
+  @include flex-center();
+}
+
+.todos{
+  width: clamp(15rem, 25rem, 95%);
+  height: clamp(30rem, 40rem, 95%);
+  background: white;
+  padding: 1rem 0;
+  flex-direction: column;
+  @include flex-center();
+  border-radius: 25px;
+  -webkit-box-shadow: 0px 0px 24px 8px rgba(0,0,0,0.35); 
+  box-shadow: 0px 0px 24px 8px rgba(0,0,0,0.35);
+  border: 1px solid purple;
+
+  /* width */
+  .todo-container::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  /* Handle */
+  .todo-container::-webkit-scrollbar-thumb {
+    background: rgba(180,41,249,1);
+    border-radius: 10px;
+  }
+
+  .todo-container{
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+    margin: 1rem 0;
+    border-top: 1px solid lightgray;
+    border-bottom: 1px solid lightgray;
+
+
+    .todo:hover{
+      background: rgb(228, 228, 228);
+    }
+    .todo{
+      width: 100%;
+      height: 3rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 1rem;
+
+        .todo-info{
+          display: flex;
+
+          .todo-urgency{
+            width: 2rem;
+            height: 2rem;
+            @include flex-center();
+            font-weight: bold;
+            border-radius: 999rem;
+            margin: auto;
+            margin-right: 1rem;
+            margin-right: clamp(0, 1rem);
+            border: 2px solid black;
+            justify-self: flex-start;
+            cursor: default;
+          }
+          
+          .urgent{
+            background-color: orange;
+          }
+
+          .todo-title{
+            white-space: nowrap;
+            overflow-x: hidden;
+            text-overflow: ellipsis;
+            display: inline-block;
+            max-width: clamp(100px, 200px, 300px);
+          }
+        }
+      .delete-button{
+        height: 2rem;
+        background: rgb(235, 128, 128);
+
+        &:hover{
+          background: rgb(255, 55, 55);
+        }
+      }
+      
+    }
+  }
+
+  .sorting{
+    width: 100%;
+    @include flex-center();
+    flex-direction: column;
+
+    button{
+      width: 50%;
+      margin: 0.5rem;
+    }
+
+    .urgent-toggle{
+      width: 50%;
+    }
+  }
+
+  .new-todo{
+    .new-todo-form{
+      justify-self: flex-end;
+      @include flex-center();
+      flex-wrap: wrap;
+      padding: 0 1rem;
+        *{
+          margin: 0.5rem;
+        }
+        input:focus{
+          border: 3px solid purple;
+          outline: none;
+        }
+    }
+
+    .new-todo-button{
+      height: 3rem;
+      width: 3rem;
+      width: 100%;
+    }
+
+    .new-todo-title{
+      height: 3rem;
+      padding: 0 0.5rem;
+      width: 100%;
+    }
+
+    .new-todo-date{
+      height: 3rem;
+      width: 100%;
+    }
+  }
+}
+
+
+
+
+
